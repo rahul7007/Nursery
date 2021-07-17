@@ -1,6 +1,7 @@
 import React from 'react'
-import './index.css'
-import aa from './images/logo.png'
+import './style.css'
+import aa from '../images/logo.png'
+import FeaturedCards from './FeaturedCards'
 
 const App = () => {
   return (
@@ -71,6 +72,58 @@ const App = () => {
             </div>
           </div>
         </nav>
+      </section>
+      {/* About section */}
+      <section id="about">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://source.unsplash.com/1600x600/?cactus" class="d-block w-100" alt="404" />
+              <div class="carousel-caption d-none d-md-block ms-auto">
+                {/* <h5>Lorem Lorem Lorem LOeferf ferfer ferfe</h5> */}
+                <p className="py-0 mb-0">Some representative placeholder</p>
+                <p className="py-0 mb-0">content for the </p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://source.unsplash.com/1600x600/?plant" class="d-block w-100" alt="404" />
+              <div class="carousel-caption d-none d-md-block">
+                {/* <h5>Second slide label</h5> */}
+                <p className="py-0 mb-0">Some representative placeholder</p>
+                <p className="py-0 mb-0">content for the </p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://source.unsplash.com/1600x600/?bonsai" class="d-block w-100" alt="404" />
+              <div class="carousel-caption d-none d-md-block">
+                {/* <h5>Third slide label</h5> */}
+                <p className="py-0 mb-0">Some representative placeholder</p>
+                <p className="py-0 mb-0">content for the </p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+      <section id="featured" className="py-5">
+        <h1 className="text-center">Featured Plants</h1>
+        <div className="container-fluid">
+          <div className="row">
+            <FeaturedCards />
+          </div>
+        </div>
       </section>
     </div >
   )

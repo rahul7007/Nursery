@@ -141,6 +141,34 @@ const App = () => {
           </div>
         </div>
       </section>
+      <section id="contact" className="py-5">
+        <h1 className="text-center">Contact Us</h1>
+        <div className="container-fluid">
+          <div className="row justify-content-md-center">
+            <div className="col-lg-4 col-md-4">
+              <form className="pt-5">
+                <div class="mb-3">
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full Name" />
+                </div>
+                <div class="mb-3">
+                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Phone Number" autoComplete="off" />
+                </div>
+                <div class="mb-3">
+                  <input type="email" class="form-control" id="exampleEmail" placeholder="Email" />
+                </div>
+              </form>
+            </div>
+            <div className="col-lg-4 col-md-4">
+              <div class="py-5">
+                <textarea className="form-control dynamicHeight" placeholder="Message" id="floatingTextarea"></textarea>
+              </div>
+            </div>
+          </div>
+          <div className="text-center">
+            <button type="submit" class="btn btn-primary mx-auto __main-btn">Send</button>
+          </div>
+        </div>
+      </section>
     </div >
   )
 }

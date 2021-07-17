@@ -98,12 +98,12 @@ code {
   display: none;
 }
 
-.card {
+#featured .card {
   padding: 1rem;
   border: none;
 }
 
-.card-img-top {
+#featured .card-img-top {
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;
@@ -117,14 +117,43 @@ code {
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
-.card-img-top:hover,
+#featured .card-img-top:hover,
 .card-img-top:focus,
 .card-img-top:active {
   -webkit-transform: translateY(-8px);
   transform: translateY(-8px);
 }
 
-.card p {
+#featured .card p {
   padding: 0;
   margin: 0;
+}
+
+/* Testimonials */
+#testimonials .card {
+  padding: 1rem;
+  border: none;
+}
+
+#testimonials .card h4::before {
+  /* color: blueviolet;
+  background-image: url("../images/quote-left-solid.svg"); */
+  content: "\f10d";
+  color: blueviolet;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 1rem;
+  margin-top: -5px;
+}
+
+#testimonials {
+  padding: 16.875rem 0 9.375rem;
+  background: url("../images/pngegg.png") no-repeat left;
+  background-size: contain;
+  /* width: 100%; */
+}
+
+#testimonials .flipImg {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }

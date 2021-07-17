@@ -1,7 +1,10 @@
 import React from 'react'
 import './style.css'
 import aa from '../images/logo.png'
+import aa1 from '../images/logo1.png'
+import TestimonialImg from '../images/testimonials-img.png'
 import FeaturedCards from './FeaturedCards'
+import TestimonialCards from './TestimonialCards'
 
 const App = () => {
   return (
@@ -122,6 +125,19 @@ const App = () => {
         <div className="container-fluid">
           <div className="row">
             <FeaturedCards />
+          </div>
+        </div>
+      </section>
+      <section id="testimonials" className="py-5">
+        <h1 className="text-center">Customer's review</h1>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-lg-5">
+              <img src={TestimonialImg} className="img-fluid flipImg" />
+            </div>
+            <div className="col-lg-7">
+              <TestimonialCards />
+            </div>
           </div>
         </div>
       </section>

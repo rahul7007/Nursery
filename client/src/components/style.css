@@ -250,3 +250,21 @@ textarea {
   padding: 1rem 2.125rem 0px 0px;
   font-size: 2rem;
 }
+
+/* videos */
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+  /* border-radius: 1.23rem; */
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-radius: 1.23rem;
+}

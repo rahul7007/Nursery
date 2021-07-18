@@ -6,6 +6,7 @@ import TestimonialImg from '../images/testimonials-img.png'
 import FeaturedCards from './FeaturedCards'
 import TestimonialCards from './TestimonialCards'
 import { SimpleMap } from './Map'
+import YoutubeEmbed from './YoutubeEmbed'
 
 const App = () => {
   return (
@@ -141,6 +142,27 @@ const App = () => {
             <div className="col-lg-7">
               <TestimonialCards />
             </div>
+          </div>
+        </div>
+      </section>
+      {/* youtube videos */}
+      <section id="videos" className="py-5">
+        <h1 className="text-center">Videos</h1>
+        <div className="row pb-3 px-5">
+          <div className="col-lg-6 col-md-6">
+            <YoutubeEmbed embedId="0W6i5LYKCSI" />
+          </div>
+          <div className="col-lg-6 col-md-6">
+            <YoutubeEmbed embedId="kWr8SvbUGMo" />
+          </div>
+        </div>
+
+        <div className="row pb-3 px-5">
+          <div className="col-lg-6 col-md-6">
+            <YoutubeEmbed embedId="xyr3Vj83lJI" />
+          </div>
+          <div className="col-lg-6 col-md-6">
+            <YoutubeEmbed embedId="X0QqhFn8HC8" />
           </div>
         </div>
       </section>

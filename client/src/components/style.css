@@ -211,7 +211,6 @@ textarea {
   text-align: center;
   align-items: center;
   justify-content: center;
-  border: 1px solid firebrick;
   transform: translate(-50%, -50%);
 }
 
@@ -226,4 +225,28 @@ textarea {
 }
 #map i {
   color: lawngreen;
+}
+
+/* footer */
+#footer ul li {
+  list-style-type: none;
+}
+
+#footer span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+#footer .pt-4 {
+  padding-top: 2.438rem !important;
+}
+
+#footer .social-icons ul li {
+  color: rgb(148, 233, 91);
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2.125rem 0px 0px;
+  font-size: 2rem;
 }

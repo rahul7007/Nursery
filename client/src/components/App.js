@@ -132,7 +132,7 @@ const App = () => {
       </section>
       {/* testimonials */}
       <section id="testimonials" className="py-5">
-        <h1 className="text-center">Customer's review</h1>
+        <h1 className="text-center">Customer review</h1>
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-5">
@@ -189,7 +189,7 @@ const App = () => {
                 </div>
                 <div className="col-lg-8 col-md-8">
                   <p>Our Office Address</p>
-                  <p>Malad West, Mumbai, Maharashtra 400064</p>
+                  <p>Hojai, Assam, 781016, Nagaon</p>
                 </div>
               </div>
               <div className="row">
@@ -198,7 +198,7 @@ const App = () => {
                 </div>
                 <div className="col-lg-8 col-md-8">
                   <p>General Enquiries</p>
-                  <p>contact@mysites.com</p>
+                  <p>contact@roushan.com</p>
                 </div>
               </div>
               <div className="row">
@@ -222,10 +222,49 @@ const App = () => {
             </div>
           </div>
         </div>
-
-        {/* <div style={{ width: '100%', height: '70vh' }}>
-          <SimpleMap />
-        </div> */}
+      </section>
+      {/* Footer */}
+      <section id="footer" class="py-5 bg-light">
+        <div className="row">
+          <div className="col-lg-3 col-md-6 pt-3">
+            <ul>
+              <span>Useful Links</span>
+              <li>PRIVACY POLICY</li>
+              <li>CATEGORIES</li>
+              <li>SERVICES</li>
+              <li>GALLERY</li>
+              <li>TESTIMONIALS</li>
+            </ul>
+          </div>
+          <div className="col-lg-3 col-md-6 pt-4">
+            <ul>
+              <li>HOME</li>
+              <li>PRODUCTS</li>
+              <li>WHAT WE DO</li>
+              <li>VIDEOS</li>
+              <li>CONTACT</li>
+            </ul>
+          </div>
+          <div className="col-lg-3 col-md-6 pt-3">
+            <ul>
+              <span>CONTACT</span>
+              <li>Hojai, Assam, 781016, Nagaon</li>
+              <li>contact@roushan.com</li>
+            </ul>
+          </div>
+          <div className="col-lg-3 col-md-6 social-icons pt-3">
+            <ul>
+              <span className="d-block">Connect</span>
+              <li><i class="fab fa-facebook-f"></i></li>
+              <li><i class="fab fa-linkedin-in"></i></li>
+              <li><i class="fab fa-instagram"></i></li>
+              <li><i class="fab fa-twitter"></i></li>
+            </ul>
+          </div>
+        </div>
+        <div className="pt-3 text-center">
+          © Copyrights 2021 - 2022. Hojai Plant.All Rights Reserved.
+        </div>
       </section>
     </div >
   )

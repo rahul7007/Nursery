@@ -5,6 +5,7 @@ import aa1 from '../images/logo1.png'
 import TestimonialImg from '../images/testimonials-img.png'
 import FeaturedCards from './FeaturedCards'
 import TestimonialCards from './TestimonialCards'
+import { SimpleMap } from './Map'
 
 const App = () => {
   return (
@@ -120,6 +121,7 @@ const App = () => {
           </button>
         </div>
       </section>
+      {/* featured images */}
       <section id="featured" className="py-5">
         <h1 className="text-center">Featured Plants</h1>
         <div className="container-fluid">
@@ -128,6 +130,7 @@ const App = () => {
           </div>
         </div>
       </section>
+      {/* testimonials */}
       <section id="testimonials" className="py-5">
         <h1 className="text-center">Customer's review</h1>
         <div className="container-fluid">
@@ -141,6 +144,7 @@ const App = () => {
           </div>
         </div>
       </section>
+      {/* contact */}
       <section id="contact" className="py-5">
         <h1 className="text-center">Contact Us</h1>
         <div className="container-fluid">
@@ -168,6 +172,60 @@ const App = () => {
             <button type="submit" class="btn btn-primary mx-auto __main-btn">Send</button>
           </div>
         </div>
+      </section>
+      {/* Address */}
+      <section id="map" className="py-5">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-lg-6 col-md-6 col-sm-12">
+              <div style={{ width: '100%', height: '70vh', borderRadius: '50px' }}>
+                <SimpleMap />
+              </div>
+            </div>
+            <div className="col-lg-6 col-md-6 col-sm-12 px-4 py-5">
+              <div className="row">
+                <div className="col-lg-4 col-md-4 text-end">
+                  <i class="fas fa-map-marker-alt fs-1"></i>
+                </div>
+                <div className="col-lg-8 col-md-8">
+                  <p>Our Office Address</p>
+                  <p>Malad West, Mumbai, Maharashtra 400064</p>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-lg-4 col-md-4 text-end">
+                  <i class="fas fa-envelope-open fs-1"></i>
+                </div>
+                <div className="col-lg-8 col-md-8">
+                  <p>General Enquiries</p>
+                  <p>contact@mysites.com</p>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-lg-4 col-md-4 text-end">
+                  <i class="fas fa-phone-alt fs-1"></i>
+                </div>
+                <div className="col-lg-8 col-md-8">
+                  <p>Call Us</p>
+                  <p>+91-8888888888</p>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-lg-4 col-md-4 text-end">
+                  <i class="fas fa-clock fs-1"></i>
+                </div>
+                <div className="col-lg-8 col-md-8">
+                  <p>Our Timing</p>
+                  <p>Mon - Sun : 09:00 AM - 09:00 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* <div style={{ width: '100%', height: '70vh' }}>
+          <SimpleMap />
+        </div> */}
       </section>
     </div >
   )

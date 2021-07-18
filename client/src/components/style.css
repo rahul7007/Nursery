@@ -201,3 +201,29 @@ textarea {
   background-color: transparent;
   color: green;
 }
+
+/* maps */
+.mapIcon {
+  font-weight: 500;
+  font-size: 2rem;
+  color: rgb(227, 243, 230);
+  display: inline-block;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid firebrick;
+  transform: translate(-50%, -50%);
+}
+
+.locationName {
+  font-size: 1rem;
+  display: initial;
+  margin-left: -2.625rem;
+  padding: 0.8rem 0.5rem;
+  background-color: rgb(146, 216, 76);
+  border-radius: 10px;
+  color: #fff;
+}
+#map i {
+  color: lawngreen;
+}

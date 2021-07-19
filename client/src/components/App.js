@@ -7,39 +7,16 @@ import FeaturedCards from './FeaturedCards'
 import TestimonialCards from './TestimonialCards'
 import { SimpleMap } from './Map'
 import YoutubeEmbed from './YoutubeEmbed'
+import Auth from './Auth'
 
 const App = () => {
+
   return (
     <div className="container-fluid">
+
       {/* Top navbar */}
-      <section id="topNav">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link" href="#"><i class="fab fa-facebook-square"></i></a>
-              <a class="nav-link" href="#"><i class="fab fa-linkedin"></i></a>
-              <a class="nav-link" href="#"><i class="fab fa-instagram-square"></i></a>
-              <a class="nav-link flexWrapper" href="#">
-                <i class="fas fa-envelope __icon-with-mail">contact@roushan.com</i>
-              </a>
-            </div>
-            <div class="navbar-nav ms-auto">
-              <a class="nav-link flexWrapper" href="#"><i class="fas fa-map-marker-alt px-2"></i>
-                <span>Hojai</span>
-              </a>
-              <a class="nav-link flexWrapper" href="#"><i class="fas fa-shipping-fast px-2"></i>
-                <span>Track Order</span>
-              </a>
-              <a class="nav-link flexWrapper" href="#"><i class="fas fa-user px-2"></i>
-                <span>Login | Sign Up</span>
-              </a>
-            </div>
-          </div>
-        </nav>
-      </section>
+      <Auth />
+
       {/* Navbar */}
       <section id="menu">
         <nav class="navbar navbar-expand-lg navbar-light">

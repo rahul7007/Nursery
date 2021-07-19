@@ -36,7 +36,6 @@ const FeaturedCards = () => {
                 })} */}
 
                 {plants.map((val, i) => {
-                    console.log(val.im + parseInt(i + 1) + '.jpg')
                     return (
                         <div className="card">
                             {/* <img src={val.im + (i + 1) + '.jpg'} className="card-img-top" alt="404" /> */}

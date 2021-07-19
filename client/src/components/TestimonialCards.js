@@ -30,7 +30,6 @@ const TestimonialCards = () => {
                 })} */}
 
                 {feedback.map((val, i) => {
-                    console.log(val.im + parseInt(i + 1) + '.jpg')
                     return (
                         <div className="card">
                             <div className="card-body">

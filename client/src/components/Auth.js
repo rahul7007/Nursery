@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link, Redirect } from "react-router-dom";
 import logo from '../images/logo1.png'
 import './style.css'
 
@@ -20,8 +21,9 @@ const Auth = () => {
 
     const login = (e) => {
         e.preventDefault()
-        if (formData.email === 'rahulsarma9999@gmail.com' && formData.password === '123') {
+        if (formData.email === 'rahul' && formData.password === '123') {
             setIsAuth(true)
+            sessionStorage.setItem("AUTHORISED", true)
         }
     }
 
@@ -29,11 +31,13 @@ const Auth = () => {
         e.preventDefault()
         if (formData.password === formData.cpassword) {
             setIsAuth(true)
+            sessionStorage.setItem("AUTHORISED", true)
         }
     }
 
     const logout = () => {
         setIsAuth(false)
+        sessionStorage.setItem("AUTHORISED", false)
     }
 
     return (
@@ -70,8 +74,20 @@ const Auth = () => {
                                             <span>Welcome <b>{formData.email}</b></span>
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item" href="#">My Cart</a></li>
-                                            <li><a class="dropdown-item" href="#">My Orders</a></li>
+                                            <li>
+                                                <a>
+                                                    <Link class="dropdown-item" to="/cart">
+                                                        Cart
+                                                    </Link>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a>
+                                                    <Link class="dropdown-item" to="/my-orders">
+                                                        My Orders
+                                                    </Link>
+                                                </a>
+                                            </li>
                                             <li><a class="dropdown-item" onClick={logout}>Sign out</a></li>
                                         </ul>
                                     </li>

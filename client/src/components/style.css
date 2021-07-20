@@ -295,3 +295,13 @@ textarea {
   color: #fff;
   font-weight: 700;
 }
+
+/* cart */
+#cart img {
+  width: 30%;
+  padding-bottom: 2.9rem;
+}
+
+#my-orders img {
+  width: 30%;
+}

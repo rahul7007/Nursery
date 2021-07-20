@@ -2,6 +2,7 @@ import React from 'react'
 import Carousel from "react-elastic-carousel";
 import './style.css'
 import cardImg from '../images/featured-plant3.jpg'
+import { Link } from 'react-router-dom';
 
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -37,14 +38,18 @@ const FeaturedCards = () => {
 
                 {plants.map((val, i) => {
                     return (
-                        <div className="card">
-                            {/* <img src={val.im + (i + 1) + '.jpg'} className="card-img-top" alt="404" /> */}
-                            <img src={cardImg} className="card-img-top" alt="404" />
-                            <div className="card-body text-center p-0">
-                                <p className="card-text">{val.name}</p>
-                                <p className="card-text">Rs. {val.price}</p>
+
+                        <Link class="text-decoration-none text-dark" to="/product">
+                            <div className="card border">
+                                {/* <img src={val.im + (i + 1) + '.jpg'} className="card-img-top" alt="404" /> */}
+                                <img src={cardImg} className="card-img-top" alt="404" />
+                                <div className="card-body text-center p-0">
+                                    <p className="card-text">{val.name}</p>
+                                    <p className="card-text">Rs. {val.price}</p>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
+
                     )
                 })}
 

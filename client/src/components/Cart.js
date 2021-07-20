@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import cart from '../images/empty-cart.png'
 import { Link } from 'react-router-dom'
 import Auth from './Auth'
+import Footer from './Footer'
 
 const Cart = () => {
     return (
@@ -19,6 +20,7 @@ const Cart = () => {
                     </Link>
                 </div>
             </section>
+            <Footer />
         </div>
     )
 }

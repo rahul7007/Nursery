@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import AddProduct from './components/AddProduct'
 import App from './components/App'
 import Cart from './components/Cart'
 import MyOrders from './components/MyOrders'
@@ -14,6 +15,7 @@ const Routes = () => {
                     <Route path="/test" exact component={Test} />
                     <Route path="/cart" exact component={Cart} />
                     <Route path="/my-orders" exact component={MyOrders} />
+                    <Route path="/product" exact component={AddProduct} />
                 </Switch>
             </BrowserRouter>
         </div>

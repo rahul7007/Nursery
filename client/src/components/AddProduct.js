@@ -1,13 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Auth from './Auth'
 import Navbar from './Navbar'
 import ProductImage from '../images/featured-plant2.jpg'
 import ShieldImage from '../images/shield.png'
 import Footer from './Footer'
+import api from '../api';
+import Spinner from './Spinner';
 
-const AddProduct = () => {
+const AddProduct = (props) => {
 
+    const [prodInfo, setProdInfo] = useState('')
     const [delivery, setDelivery] = useState('hidden')
+
+    const loadAProduct = () => {
+        api.getProductById(props.match.params.productId).then((response) => {
+            if (response.error) {
+                console.log("Error", response.data.data);
+            } else {
+                setProdInfo(response.data.data)
+            }
+        })
+    }
+
+    useEffect(() => {
+        loadAProduct()
+    }, [])
 
     const checkPin = (e) => {
         e.preventDefault()
@@ -25,9 +42,9 @@ const AddProduct = () => {
                             <img src={ProductImage} className="img-fluid border rounded" />
                         </div>
                         <div className="col-lg-8 col-md-8">
-                            <h4>Beautiful Yellow Daffodils</h4>
+                            <h4>{prodInfo.name}</h4>
                             <br />
-                            <h3>Rs. 500</h3>
+                            <h3>Rs. {prodInfo.price}</h3>
 
                             <form class="row g-0 pt-3">
                                 <div class="col-auto">

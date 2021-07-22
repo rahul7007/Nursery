@@ -6,11 +6,13 @@ const api = axios.create({
 
 // export const createProduct = payload => api.post(`/insert`, payload)
 export const displayData = () => api.get(`/products`)
+export const getProductById = (id) => api.get(`/product/${id}`)
 
 
 const apis = {
     // insertData,
     displayData,
+    getProductById
 }
 
 export default apis

@@ -10,5 +10,6 @@ const router = express.Router()
 // router.delete('/delete/:id', nurseryCtrl.deleteData)
 router.post('/product/create', nurseryCtrl.createProduct)
 router.get('/products', nurseryCtrl.getProducts)
+router.get('/product/:productId', nurseryCtrl.getProductById)
 
 module.exports = router

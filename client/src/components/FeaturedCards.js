@@ -37,7 +37,7 @@ const FeaturedCards = () => {
                     {getAllProducts.map((val, i) => {
                         return (
 
-                            <Link class="text-decoration-none text-dark" to="/product">
+                            <Link class="text-decoration-none text-dark" to={`/product/${val._id}`}>
                                 <div className="card border">
                                     <img src={cardImg} className="card-img-top" alt="404" />
                                     <div className="card-body text-center p-0">

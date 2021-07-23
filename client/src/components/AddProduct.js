@@ -8,7 +8,7 @@ import api from '../api';
 import Spinner from './Spinner';
 import { Redirect } from 'react-router-dom'
 
-var cartItems = []
+
 const AddProduct = (props) => {
 
     const [prodInfo, setProdInfo] = useState('')
@@ -34,10 +34,14 @@ const AddProduct = (props) => {
     }
 
     const addToCart = () => {
+        var cartItems = JSON.parse(localStorage.getItem("cartItems")) === null ? [] : JSON.parse(localStorage.getItem("cartItems"))
+
+
+
         cartItems.unshift(prodInfo);
-        console.log("prodInfo", cartItems)
+
         localStorage.setItem("cartItems", JSON.stringify(cartItems))
-        // props.history.push('/cart')
+        props.history.push('/cart')
     }
 
     const buyNow = () => {

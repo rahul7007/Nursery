@@ -7,16 +7,28 @@ import Footer from './Footer'
 import ProductImage from '../images/featured-plant2.jpg'
 
 const Cart = () => {
+
+    const [cartItems, updateCartItems] = useState(
+        JSON.parse(localStorage.getItem("cartItems")) === null ? [] : JSON.parse(localStorage.getItem("cartItems"))
+    )
+
+    const remove = (e) => {
+        var cartItemsArray = JSON.parse(localStorage.getItem("cartItems"))
+        cartItemsArray.splice(e.target.id, 1);
+        localStorage.setItem("cartItems", JSON.stringify(cartItemsArray))
+        updateCartItems(cartItemsArray)
+    }
+
     return (
         <div>
             <Auth />
             <Navbar />
             <section id="cart">
-                {localStorage.getItem("cartItems") ?
+                {cartItems.length > 0 ?
 
                     <div className="container py-5 shadow-lg bg-body">
                         <div className="row gx-2">
-                            {JSON.parse(localStorage.getItem("cartItems")).map((val, i) => {
+                            {cartItems.map((val, i) => {
                                 return (
                                     <>
                                         <div className="col-lg-8">
@@ -45,7 +57,7 @@ const Cart = () => {
                                                                             <i class="far fa-heart pe-2"></i>
                                                                             Move to wishlist
                                                                         </span>
-                                                                        <span className="px-2 action">
+                                                                        <span className="px-2 action" id={i} onClick={remove}>
                                                                             <i class="fas fa-times pe-2"></i>
                                                                             Remove
                                                                         </span>

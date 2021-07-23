@@ -13,6 +13,8 @@ const AddProduct = (props) => {
 
     const [prodInfo, setProdInfo] = useState('')
     const [delivery, setDelivery] = useState('hidden')
+    const [btnGoToCartDisplay, setBtnGoToCartDisplay] = useState('hidden')
+    const [btnAddToCartDisplay, setBtnAddToCartDisplay] = useState('')
 
     const loadAProduct = () => {
         api.getProductById(props.match.params.productId).then((response) => {
@@ -35,12 +37,13 @@ const AddProduct = (props) => {
 
     const addToCart = () => {
         var cartItems = JSON.parse(localStorage.getItem("cartItems")) === null ? [] : JSON.parse(localStorage.getItem("cartItems"))
-
-
-
         cartItems.unshift(prodInfo);
-
         localStorage.setItem("cartItems", JSON.stringify(cartItems))
+        setBtnGoToCartDisplay('')
+        setBtnAddToCartDisplay('none')
+    }
+
+    const goToCart = () => {
         props.history.push('/cart')
     }
 
@@ -79,9 +82,13 @@ const AddProduct = (props) => {
 
                                 <div className="row pt-5">
                                     <div className="col-lg-4 col-md-6 col-sm-6">
-                                        <button onClick={addToCart} className="btn btn-success">
+                                        <button onClick={addToCart} className="btn btn-success" style={{ display: btnAddToCartDisplay }}>
                                             <i class="fas fa-cart-plus pe-2"></i>
                                             ADD TO CART
+                                        </button>
+                                        <button onClick={goToCart} className="btn btn-success" style={{ visibility: btnGoToCartDisplay }}>
+                                            <i class="fas fa-cart-plus pe-2"></i>
+                                            Go TO CART
                                         </button>
                                     </div>
                                     <div className="col-lg-8 col-md-6 col-sm-6">

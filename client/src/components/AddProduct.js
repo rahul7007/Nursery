@@ -6,7 +6,9 @@ import ShieldImage from '../images/shield.png'
 import Footer from './Footer'
 import api from '../api';
 import Spinner from './Spinner';
+import { Redirect } from 'react-router-dom'
 
+var cartItems = []
 const AddProduct = (props) => {
 
     const [prodInfo, setProdInfo] = useState('')
@@ -31,6 +33,17 @@ const AddProduct = (props) => {
         setDelivery('')
     }
 
+    const addToCart = () => {
+        cartItems.unshift(prodInfo);
+        console.log("prodInfo", cartItems)
+        localStorage.setItem("cartItems", JSON.stringify(cartItems))
+        // props.history.push('/cart')
+    }
+
+    const buyNow = () => {
+        console.log(JSON.parse(localStorage.getItem("cartItems")))
+    }
+
     return (
         <div>
             <Auth />
@@ -41,53 +54,55 @@ const AddProduct = (props) => {
                         <div className="col-lg-4 col-md-4">
                             <img src={ProductImage} className="img-fluid border rounded" />
                         </div>
-                        <div className="col-lg-8 col-md-8">
-                            <h4>{prodInfo.name}</h4>
-                            <br />
-                            <h3>Rs. {prodInfo.price}</h3>
+                        {prodInfo ?
+                            <div className="col-lg-8 col-md-8">
+                                <h4>{prodInfo.name}</h4>
+                                <br />
+                                <h3>Rs. {prodInfo.price}</h3>
 
-                            <form class="row g-0 pt-3">
-                                <div class="col-auto">
-                                    <input type="text" class="form-control" placeholder="Enter pincode" />
-                                </div>
-                                <div class="col-auto">
-                                    <button class="btn btn-success" onClick={checkPin}>Check</button>
-                                </div>
-                            </form>
+                                <form class="row g-0 pt-3">
+                                    <div class="col-auto">
+                                        <input type="text" class="form-control" placeholder="Enter pincode" />
+                                    </div>
+                                    <div class="col-auto">
+                                        <button class="btn btn-success" onClick={checkPin}>Check</button>
+                                    </div>
+                                </form>
 
-                            <div style={{ visibility: delivery }}>
-                                Delivery by Jul 24, Saturday by 01:00 PM
+                                <div style={{ visibility: delivery }}>
+                                    Delivery by Jul 24, Saturday by 01:00 PM
+                                </div>
+
+                                <div className="row pt-5">
+                                    <div className="col-lg-4 col-md-6 col-sm-6">
+                                        <button onClick={addToCart} className="btn btn-success">
+                                            <i class="fas fa-cart-plus pe-2"></i>
+                                            ADD TO CART
+                                        </button>
+                                    </div>
+                                    <div className="col-lg-8 col-md-6 col-sm-6">
+                                        <button onClick={buyNow} className="btn btn-success">
+                                            <i class="far fa-play-circle pe-2"></i>
+                                            BUY NOW
+                                        </button>
+                                    </div>
+                                    <br /><br />
+                                    <img src={ShieldImage} className="img-fluid shield-icon" />
+                                    Safe and Secure payments.100% Authentic products
+                                </div>
+
+                                <div className="row pt-5">
+                                    <h3>Specifications</h3>
+                                    <hr />
+                                    <div className="col-lg-4 col-md-4">
+                                        Brand
+                                    </div>
+                                    <div className="col-lg-8 col-md-8">
+                                        Beautiful Yellow Daffodils
+                                    </div>
+                                </div>
                             </div>
-
-                            <div className="row pt-5">
-                                <div className="col-lg-4 col-md-6 col-sm-6">
-                                    <button className="btn btn-success">
-                                        <i class="fas fa-cart-plus pe-2"></i>
-                                        ADD TO CART
-                                    </button>
-                                </div>
-                                <div className="col-lg-8 col-md-6 col-sm-6">
-                                    <button className="btn btn-success">
-                                        <i class="far fa-play-circle pe-2"></i>
-                                        BUY NOW
-                                    </button>
-                                </div>
-                                <br /><br />
-                                <img src={ShieldImage} className="img-fluid shield-icon" />
-                                Safe and Secure payments.100% Authentic products
-                            </div>
-
-                            <div className="row pt-5">
-                                <h3>Specifications</h3>
-                                <hr />
-                                <div className="col-lg-4 col-md-4">
-                                    Brand
-                                </div>
-                                <div className="col-lg-8 col-md-8">
-                                    Beautiful Yellow Daffodils
-                                </div>
-                            </div>
-                        </div>
+                            : <Spinner />}
                     </div>
                 </div>
             </section>

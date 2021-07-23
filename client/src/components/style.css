@@ -297,7 +297,7 @@ textarea {
 }
 
 /* cart */
-#cart img {
+#cart #temp img {
   width: 30%;
   padding-bottom: 2.9rem;
 }
@@ -326,4 +326,17 @@ textarea {
 
 #product .col-auto button {
   padding: 0.3rem 1.9rem;
+}
+
+#cart .borderless th {
+  border: none;
+}
+
+#cart .fa-heart:hover {
+  color: red;
+}
+
+#cart .action:hover {
+  cursor: pointer;
+  color: brown;
 }

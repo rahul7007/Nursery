@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import cart from '../images/empty-cart.png'
 import { Link } from 'react-router-dom'
@@ -6,18 +6,31 @@ import Auth from './Auth'
 import Footer from './Footer'
 import ProductImage from '../images/featured-plant2.jpg'
 
+var totalValue = 0
 const Cart = () => {
 
     const [cartItems, updateCartItems] = useState(
         JSON.parse(localStorage.getItem("cartItems")) === null ? [] : JSON.parse(localStorage.getItem("cartItems"))
     )
 
+    const [totalPrice, setTotalPrice] = useState(totalValue)
+
     const remove = (e) => {
         var cartItemsArray = JSON.parse(localStorage.getItem("cartItems"))
         cartItemsArray.splice(e.target.id, 1);
         localStorage.setItem("cartItems", JSON.stringify(cartItemsArray))
         updateCartItems(cartItemsArray)
+        let deductedPrice = totalPrice - cartItems[e.target.id].price
+        setTotalPrice(deductedPrice)
     }
+
+    useEffect(() => {
+        cartItems.map((val, i) => {
+            totalValue = totalValue + val.price
+            setTotalPrice(totalValue)
+        })
+
+    }, [])
 
     return (
         <div>
@@ -74,7 +87,7 @@ const Cart = () => {
                                                             </select>
                                                         </td>
                                                         <td className="text-end">
-                                                            ₹ 700
+                                                            ₹ {val.price}
                                                         </td>
                                                     </tr>
 
@@ -90,7 +103,9 @@ const Cart = () => {
                                                         <tbody>
                                                             <tr>
                                                                 <td className="border-0">Item(s) Total</td>
-                                                                <td className="text-end border-0">Rs. 500</td>
+                                                                <td className="text-end border-0">
+                                                                    Rs. {totalPrice}
+                                                                </td>
                                                             </tr>
 
                                                             <tr>
@@ -100,13 +115,13 @@ const Cart = () => {
 
                                                             <tr>
                                                                 <td className="border-0">Amount Payable</td>
-                                                                <td className="text-end border-0">rr 67</td>
+                                                                <td className="text-end border-0">{totalPrice}</td>
                                                             </tr>
                                                         </tbody>
 
                                                     </table>
                                                 </div>
-                                                <button className="btn btn-success w-100">CHEKCOUT</button>
+                                                <button className="btn btn-success w-100">CHECKOUT</button>
                                             </div> : null
                                         }
                                     </>

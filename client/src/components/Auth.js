@@ -26,7 +26,7 @@ const Auth = () => {
         const payload = { email, password }
         const { data } = await api.signin(payload)
         console.log('response', data)
-        localStorage.setItem("USER", data.data._id)
+        localStorage.setItem("USER", JSON.stringify(data.data))
         if (data.error) {
             alert("ERROR")
         } else {
@@ -54,9 +54,10 @@ const Auth = () => {
         }
     }
 
-    const logout = () => {
+    const signout = () => {
         setIsAuth(false)
         sessionStorage.setItem("AUTHORISED", false)
+        localStorage.removeItem("USER")
     }
 
     return (
@@ -85,12 +86,15 @@ const Auth = () => {
                                 <span>Track Order</span>
                             </a>
 
-                            {isAuth ?
+                            {/* {isAuth ? */}
+                            {localStorage.getItem("USER") ?
                                 <>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link flexWrapper dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown" >
                                             <i class="fas fa-user px-2"></i>
-                                            <span>Welcome <b>{formData.email}</b></span>
+                                            {/* <span>Welcome <b>{formData.email}</b></span> */}
+                                            {console.log("->", JSON.parse(localStorage.getItem("USER")))}
+                                            <span>Welcome <b>{JSON.parse(localStorage.getItem("USER")).email}</b></span>
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <li>
@@ -107,7 +111,7 @@ const Auth = () => {
                                                     </Link>
                                                 </a>
                                             </li>
-                                            <li><a class="dropdown-item" onClick={logout}>Sign out</a></li>
+                                            <li><a class="dropdown-item" onClick={signout}>Sign out</a></li>
                                         </ul>
                                     </li>
                                 </> : <>

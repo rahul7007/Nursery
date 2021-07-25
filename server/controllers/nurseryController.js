@@ -1,6 +1,57 @@
+const User = require('../models/UserModel')
 const Product = require('../models/ProductModel')
 const formidable = require('formidable')
 const fs = require('fs')
+
+exports.signup = async (req, res) => {
+    const { email, password } = req.body
+
+    try {
+        //Checks if user already exists
+        let user = await User.findOne({ email })
+        if (user) {
+            // return res.status(400).json({ error: true, message: "User Already Exists" })
+            return res.json({ error: true, message: "User Already Exists" })
+        }
+
+        user = new User({
+            email,
+            password
+        })
+
+        await user.save()
+
+        return res.status(200).json({ success: true, message: "User Registered Successfully", data: user })
+
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send('Server Error')
+    }
+}
+
+exports.signin = async (req, res) => {
+
+    const { email, password } = req.body
+
+
+    try {
+        let user = await User.findOne({ email })
+
+        if (user) {
+            if (user.password === password) {
+                return res.status(200).json({ success: true, message: "Signin Successful", data: user })
+            } else {
+                return res.json({ error: true, message: "Authentication error" })
+            }
+        } else {
+            return res.json({ error: true, message: "Authentication error!" })
+        }
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send('Server Error')
+    }
+
+}
 
 exports.createProduct = (req, res) => {
     let form = new formidable.IncomingForm();

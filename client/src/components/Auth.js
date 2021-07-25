@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, Redirect } from "react-router-dom";
+import api from '../api';
 import logo from '../images/logo1.png'
 import './style.css'
 
@@ -19,19 +20,37 @@ const Auth = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const login = (e) => {
+    const signin = async (e) => {
         e.preventDefault()
-        if (formData.email === 'rahul' && formData.password === '123') {
+        const { email, password } = formData
+        const payload = { email, password }
+        const { data } = await api.signin(payload)
+        console.log('response', data)
+        localStorage.setItem("USER", data.data._id)
+        if (data.error) {
+            alert("ERROR")
+        } else {
             setIsAuth(true)
             sessionStorage.setItem("AUTHORISED", true)
         }
     }
 
-    const signup = (e) => {
+    const signup = async (e) => {
         e.preventDefault()
         if (formData.password === formData.cpassword) {
-            setIsAuth(true)
-            sessionStorage.setItem("AUTHORISED", true)
+
+            const { email, password } = formData
+            const payload = { email, password }
+            const { data } = await api.signup(payload)
+            console.log('response', data)
+            if (data.error) {
+                alert("ERROR")
+            } else {
+                setIsAuth(true)
+                sessionStorage.setItem("AUTHORISED", true)
+            }
+        } else {
+            console.log("Password mismatch");
         }
     }
 
@@ -146,7 +165,7 @@ const Auth = () => {
                                                 type="submit"
                                                 class="btn btn-color w-100"
                                                 data-bs-dismiss="modal"
-                                                onClick={login}
+                                                onClick={signin}
                                             >
                                                 Login
                                             </button>

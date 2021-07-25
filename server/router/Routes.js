@@ -8,6 +8,11 @@ const router = express.Router()
 // router.get('/display', nurseryCtrl.getData)
 // router.put('/update/:id', nurseryCtrl.updateData)
 // router.delete('/delete/:id', nurseryCtrl.deleteData)
+
+// login/register
+router.post('/signup', nurseryCtrl.signup)
+router.post('/signin', nurseryCtrl.signin)
+
 router.post('/product/create', nurseryCtrl.createProduct)
 router.get('/products', nurseryCtrl.getProducts)
 router.get('/product/:productId', nurseryCtrl.getProductById)

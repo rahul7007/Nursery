@@ -127,8 +127,33 @@ exports.getProductById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+exports.addToCart = async (req, res) => {
 
+    var newItem = true
 
-// module.exports = {
-//     getData
-// }
+    const { prod_id, prod_name, prod_price, prod_qty } = req.body;
+
+    let user = await User.findOne({ _id: req.params.userId })
+    let userCart = user.cart
+    for (let i = 0; i < userCart.length; i++) {
+        if (prod_id == userCart[i].product_id) {
+            newItem = false
+            userCart[i].product_qty += 1
+            await user.save()
+            res.json(user);
+            break
+        }
+    }
+
+    if (newItem) {
+        const newExp = {
+            product_id: prod_id,
+            product_name: prod_name,
+            product_price: prod_price,
+            product_qty: prod_qty
+        }
+        user.cart.unshift(newExp)
+        await user.save()
+        res.json(user);
+    }
+}

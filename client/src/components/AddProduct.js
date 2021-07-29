@@ -6,7 +6,6 @@ import ShieldImage from '../images/shield.png'
 import Footer from './Footer'
 import api from '../api';
 import Spinner from './Spinner';
-import { Redirect } from 'react-router-dom'
 
 
 const AddProduct = (props) => {
@@ -36,11 +35,24 @@ const AddProduct = (props) => {
     }
 
     const addToCart = () => {
-        var cartItems = JSON.parse(localStorage.getItem("cartItems")) === null ? [] : JSON.parse(localStorage.getItem("cartItems"))
-        cartItems.unshift(prodInfo);
-        localStorage.setItem("cartItems", JSON.stringify(cartItems))
-        setBtnGoToCartDisplay('')
-        setBtnAddToCartDisplay('none')
+        if (localStorage.getItem("USER")) {
+            // var cartItems = JSON.parse(localStorage.getItem("cartItems")) === null ? [] : JSON.parse(localStorage.getItem("cartItems"))
+            // cartItems.unshift(prodInfo);
+            // localStorage.setItem("cartItems", JSON.stringify(cartItems))
+
+            const userId = JSON.parse(localStorage.getItem("USER"))._id
+            const prod_id = prodInfo._id
+            const prod_name = prodInfo.name
+            const prod_price = prodInfo.price
+            const prod_qty = 1
+            const payload = { prod_id, prod_name, prod_price, prod_qty }
+            const data = api.addItemToCart(userId, payload)
+            console.log(data.data)
+            setBtnGoToCartDisplay('')
+            setBtnAddToCartDisplay('none')
+        } else {
+            alert("LOGIN FIRST")
+        }
     }
 
     const goToCart = () => {

@@ -17,4 +17,7 @@ router.post('/product/create', nurseryCtrl.createProduct)
 router.get('/products', nurseryCtrl.getProducts)
 router.get('/product/:productId', nurseryCtrl.getProductById)
 
+// aad to cart
+router.put('/add-to-cart/:userId', nurseryCtrl.addToCart) //update user model with cart array
+
 module.exports = router

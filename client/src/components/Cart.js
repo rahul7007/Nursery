@@ -7,11 +7,14 @@ import Footer from './Footer'
 import ProductImage from '../images/featured-plant2.jpg'
 
 var totalValue = 0
+var tempArray = []
 const Cart = () => {
 
     const [cartItems, updateCartItems] = useState(
         JSON.parse(localStorage.getItem("cartItems")) === null ? [] : JSON.parse(localStorage.getItem("cartItems"))
     )
+
+    const [arr, setArr] = useState([])
 
     const [totalPrice, setTotalPrice] = useState(totalValue)
 
@@ -31,6 +34,42 @@ const Cart = () => {
         })
 
     }, [])
+
+    const testIng = (e) => {
+
+        const objIndex = e.target.id
+
+        const updatedObj = { ...cartItems[objIndex], price: cartItems[e.target.id].price * e.target.value };
+
+        tempArray = [
+            ...tempArray.slice(0, objIndex),
+            updatedObj,
+            ...tempArray.slice(objIndex + 1),
+        ];
+        console.log("cartItems", cartItems)
+        console.log("tempArray", tempArray)
+        setArr(tempArray)
+    }
+
+    const check = () => {
+        console.log("cartItems", cartItems)
+        console.log("tempArray", tempArray)
+        let Xtotal = 0
+        let diff = cartItems.length - tempArray.length
+        for (let i = 0; i < tempArray.length; i++) {
+            Xtotal = Xtotal + tempArray[i].price
+        }
+        // console.log("Final", Xtotal)
+        // for (let i = cartItems.length - 1; i > diff; i--) {
+        //     Xtotal += cartItems[i].price
+        // }
+        if (diff) {
+            for (let i = tempArray.length; i < cartItems.length; i++) {
+                Xtotal = Xtotal + cartItems[i].price
+            }
+        }
+        console.log("Final amt", Xtotal)
+    }
 
     return (
         <div>
@@ -74,20 +113,22 @@ const Cart = () => {
                                                                             <i class="fas fa-times pe-2"></i>
                                                                             Remove
                                                                         </span>
+                                                                        <button onClick={check}>Check</button>
                                                                     </p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td className="text-center">
-                                                            <select name="cars" id="cars" className="rounded-pill">
-                                                                <option value="volvo">1</option>
-                                                                <option value="saab">2</option>
-                                                                <option value="mercedes">3</option>
-                                                                <option value="audi">4</option>
+                                                            <select className="rounded-pill" id={i} onChange={testIng}>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
                                                             </select>
                                                         </td>
                                                         <td className="text-end">
-                                                            ₹ {val.price}
+                                                            ₹ {arr[i] ? arr[i].price : cartItems[i].price}
                                                         </td>
                                                     </tr>
 

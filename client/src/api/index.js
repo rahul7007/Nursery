@@ -12,13 +12,17 @@ export const signin = payload => api.post(`/signin`, payload)
 export const displayData = () => api.get(`/products`)
 export const getProductById = (id) => api.get(`/product/${id}`)
 
+//add to cart button
+export const addItemToCart = (id, payload) => api.put(`/add-to-cart/${id}`, payload)
+
 
 const apis = {
     // insertData,
     displayData,
     getProductById,
     signup,
-    signin
+    signin,
+    addItemToCart
 }
 
 export default apis

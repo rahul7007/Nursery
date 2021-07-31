@@ -20,4 +20,7 @@ router.get('/product/:productId', nurseryCtrl.getProductById)
 // aad to cart
 router.put('/add-to-cart/:userId', nurseryCtrl.addToCart) //update user model with cart array
 
+//access my cart
+router.get('/my-cart/:userId', nurseryCtrl.viewMyCart) //get cart items
+
 module.exports = router

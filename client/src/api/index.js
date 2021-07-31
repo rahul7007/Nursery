@@ -15,6 +15,8 @@ export const getProductById = (id) => api.get(`/product/${id}`)
 //add to cart button
 export const addItemToCart = (id, payload) => api.put(`/add-to-cart/${id}`, payload)
 
+//Get the cart items of an user
+export const getCartByUser = (id) => api.get(`/my-cart/${id}`)
 
 const apis = {
     // insertData,
@@ -22,7 +24,8 @@ const apis = {
     getProductById,
     signup,
     signin,
-    addItemToCart
+    addItemToCart,
+    getCartByUser
 }
 
 export default apis

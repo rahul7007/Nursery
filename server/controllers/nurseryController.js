@@ -157,3 +157,18 @@ exports.addToCart = async (req, res) => {
         res.json(user);
     }
 }
+
+exports.viewMyCart = async (req, res) => {
+    try {
+        let user = await User.findOne({ _id: req.params.userId })
+
+        if (user.cart.length == 0) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Empty cart` })
+        }
+        return res.status(200).json({ success: true, data: user.cart })
+    } catch (err) {
+        console.log(err)
+    }
+}

@@ -5,70 +5,37 @@ import { Link } from 'react-router-dom'
 import Auth from './Auth'
 import Footer from './Footer'
 import ProductImage from '../images/featured-plant2.jpg'
+import api from '../api'
 
-var totalValue = 0
-var tempArray = []
 const Cart = () => {
+    const [myCart, setSetCart] = useState([])
 
-    const [cartItems, updateCartItems] = useState(
-        JSON.parse(localStorage.getItem("cartItems")) === null ? [] : JSON.parse(localStorage.getItem("cartItems"))
-    )
-
-    const [arr, setArr] = useState([])
-
-    const [totalPrice, setTotalPrice] = useState(totalValue)
+    const testIng = (e) => {
+        alert("WIPP")
+    }
 
     const remove = (e) => {
-        var cartItemsArray = JSON.parse(localStorage.getItem("cartItems"))
-        cartItemsArray.splice(e.target.id, 1);
-        localStorage.setItem("cartItems", JSON.stringify(cartItemsArray))
-        updateCartItems(cartItemsArray)
-        let deductedPrice = totalPrice - cartItems[e.target.id].price
-        setTotalPrice(deductedPrice)
+        alert("WIP")
     }
 
     useEffect(() => {
-        cartItems.map((val, i) => {
-            totalValue = totalValue + val.price
-            setTotalPrice(totalValue)
+        api.getCartByUser('60fcd575062a7a736c5a9732').then((response) => {
+            if (response.error) {
+                console.log("Error", response.data.data);
+            } else {
+                console.log("de", response.data.data)
+                setSetCart(response.data.data)
+            }
         })
 
     }, [])
 
-    const testIng = (e) => {
-
-        const objIndex = e.target.id
-
-        const updatedObj = { ...cartItems[objIndex], price: cartItems[e.target.id].price * e.target.value };
-
-        tempArray = [
-            ...tempArray.slice(0, objIndex),
-            updatedObj,
-            ...tempArray.slice(objIndex + 1),
-        ];
-        console.log("cartItems", cartItems)
-        console.log("tempArray", tempArray)
-        setArr(tempArray)
-    }
-
-    const check = () => {
-        console.log("cartItems", cartItems)
-        console.log("tempArray", tempArray)
-        let Xtotal = 0
-        let diff = cartItems.length - tempArray.length
-        for (let i = 0; i < tempArray.length; i++) {
-            Xtotal = Xtotal + tempArray[i].price
+    const totalItemsPrice = () => {
+        let s = 0
+        for (let i = 0; i < myCart.length; i++) {
+            s = s + parseInt(myCart[i].product_price * myCart[i].product_qty)
         }
-        // console.log("Final", Xtotal)
-        // for (let i = cartItems.length - 1; i > diff; i--) {
-        //     Xtotal += cartItems[i].price
-        // }
-        if (diff) {
-            for (let i = tempArray.length; i < cartItems.length; i++) {
-                Xtotal = Xtotal + cartItems[i].price
-            }
-        }
-        console.log("Final amt", Xtotal)
+        return s
     }
 
     return (
@@ -76,11 +43,11 @@ const Cart = () => {
             <Auth />
             <Navbar />
             <section id="cart">
-                {cartItems.length > 0 ?
+                {myCart.length > 0 ?
 
                     <div className="container py-5 shadow-lg bg-body">
                         <div className="row gx-2">
-                            {cartItems.map((val, i) => {
+                            {myCart.map((val, i) => {
                                 return (
                                     <>
                                         <div className="col-lg-8">
@@ -102,8 +69,8 @@ const Cart = () => {
                                                                     <img src={ProductImage} className=" img-fluid border" />
                                                                 </div>
                                                                 <div className="col-lg-8 d-flex justify-content-center flex-column">
-                                                                    <p className="ps-3">{val.name}</p>
-                                                                    <p className="ps-3">₹ {val.price}</p>
+                                                                    <p className="ps-3">{val.product_name}</p>
+                                                                    <p className="ps-3">₹ {val.product_price}</p>
                                                                     <p>
                                                                         <span className="px-3 action">
                                                                             <i class="far fa-heart pe-2"></i>
@@ -113,22 +80,18 @@ const Cart = () => {
                                                                             <i class="fas fa-times pe-2"></i>
                                                                             Remove
                                                                         </span>
-                                                                        <button onClick={check}>Check</button>
                                                                     </p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td className="text-center">
-                                                            <select className="rounded-pill" id={i} onChange={testIng}>
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
+                                                            <select className="rounded-pill" onChange={testIng}>
+                                                                <option value={val.product_id}>{val.product_qty}</option>
                                                             </select>
                                                         </td>
                                                         <td className="text-end">
-                                                            ₹ {arr[i] ? arr[i].price : cartItems[i].price}
+                                                            {/* ₹ {arr[i] ? arr[i].price : myCart[i].price} */}
+                                                            ₹ {val.product_price * val.product_qty}
                                                         </td>
                                                     </tr>
 
@@ -145,7 +108,7 @@ const Cart = () => {
                                                             <tr>
                                                                 <td className="border-0">Item(s) Total</td>
                                                                 <td className="text-end border-0">
-                                                                    Rs. {totalPrice}
+                                                                    Rs. {totalItemsPrice()}
                                                                 </td>
                                                             </tr>
 
@@ -156,7 +119,7 @@ const Cart = () => {
 
                                                             <tr>
                                                                 <td className="border-0">Amount Payable</td>
-                                                                <td className="text-end border-0">{totalPrice}</td>
+                                                                <td className="text-end border-0">{totalItemsPrice()}</td>
                                                             </tr>
                                                         </tbody>
 

@@ -21,6 +21,9 @@ export const getCartByUser = (id) => api.get(`/my-cart/${id}`)
 //update cart with items quantity
 export const updateCart = (userId, prodId, payload) => api.post(`/update-cart/${userId}/${prodId}`, payload)
 
+//remove cart items
+export const removeCartItem = (userId, prodId) => api.delete(`/remove-cart-item/${userId}/${prodId}`)
+
 const apis = {
     // insertData,
     displayData,
@@ -29,7 +32,8 @@ const apis = {
     signin,
     addItemToCart,
     getCartByUser,
-    updateCart
+    updateCart,
+    removeCartItem
 }
 
 export default apis

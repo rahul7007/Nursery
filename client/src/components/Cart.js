@@ -43,8 +43,16 @@ const Cart = () => {
         })
     }
 
-    const remove = (e) => {
-        alert("WIP")
+    const removeItem = (e) => {
+        const userId = JSON.parse(localStorage.getItem("USER"))._id
+        const prodId = e.target.id
+        api.removeCartItem(userId, prodId).then(response => {
+            if (response.error) {
+                console.log("Error", response.data.data);
+            } else {
+                setSetCart(response.data.cart)
+            }
+        })
     }
 
     return (
@@ -85,7 +93,7 @@ const Cart = () => {
                                                                             <i class="far fa-heart pe-2"></i>
                                                                             Move to wishlist
                                                                         </span>
-                                                                        <span className="px-2 action" id={i} onClick={remove}>
+                                                                        <span className="px-2 action" id={val._id} onClick={removeItem}>
                                                                             <i class="fas fa-times pe-2"></i>
                                                                             Remove
                                                                         </span>

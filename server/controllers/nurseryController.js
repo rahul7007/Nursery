@@ -185,3 +185,16 @@ exports.updateCart = async (req, res) => {
     await user.save()
     res.json(user);
 }
+
+exports.removeCartItem = async (req, res) => {
+    let user = await User.findOne({ _id: req.params.userId })
+    console.log(req.params.productId)
+    let userCart = user.cart
+    for (let i = 0; i < userCart.length; i++) {
+        if (req.params.productId == userCart[i]._id) {
+            userCart.splice(i, 1);
+        }
+    }
+    await user.save()
+    res.json(user);
+}

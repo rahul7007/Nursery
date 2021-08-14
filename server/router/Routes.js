@@ -26,4 +26,7 @@ router.get('/my-cart/:userId', nurseryCtrl.viewMyCart) //get cart items
 //modify cart items
 router.post('/update-cart/:userId/:productId', nurseryCtrl.updateCart)
 
+//remove cart items
+router.delete('/remove-cart-item/:userId/:productId', nurseryCtrl.removeCartItem)
+
 module.exports = router

@@ -8,7 +8,7 @@ import ProductImage from '../images/featured-plant2.jpg'
 import api from '../api'
 import './style.css'
 
-const Cart = () => {
+const Cart = ({ history }) => {
     const [myCart, setSetCart] = useState([])
 
     useEffect(() => {
@@ -152,7 +152,7 @@ const Cart = () => {
 
                                                     </table>
                                                 </div>
-                                                <button className="btn btn-success w-100">CHECKOUT</button>
+                                                <button className="btn btn-success w-100" onClick={() => history.push('/checkout')}>CHECKOUT</button>
                                             </div> : null
                                         }
                                     </>

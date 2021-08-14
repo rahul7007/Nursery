@@ -172,3 +172,16 @@ exports.viewMyCart = async (req, res) => {
         console.log(err)
     }
 }
+
+exports.updateCart = async (req, res) => {
+    const { newQty } = req.body;
+    let user = await User.findOne({ _id: req.params.userId })
+    let userCart = user.cart
+    for (let i = 0; i < userCart.length; i++) {
+        if (req.params.productId == userCart[i].product_id) {
+            userCart[i].product_qty = newQty
+        }
+    }
+    await user.save()
+    res.json(user);
+}

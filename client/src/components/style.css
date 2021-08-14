@@ -340,3 +340,7 @@ textarea {
   cursor: pointer;
   color: brown;
 }
+
+.remove-outline {
+  outline: none !important;
+}

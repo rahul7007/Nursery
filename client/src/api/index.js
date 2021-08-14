@@ -18,6 +18,9 @@ export const addItemToCart = (id, payload) => api.put(`/add-to-cart/${id}`, payl
 //Get the cart items of an user
 export const getCartByUser = (id) => api.get(`/my-cart/${id}`)
 
+//update cart with items quantity
+export const updateCart = (userId, prodId, payload) => api.post(`/update-cart/${userId}/${prodId}`, payload)
+
 const apis = {
     // insertData,
     displayData,
@@ -25,7 +28,8 @@ const apis = {
     signup,
     signin,
     addItemToCart,
-    getCartByUser
+    getCartByUser,
+    updateCart
 }
 
 export default apis

@@ -6,24 +6,16 @@ import Auth from './Auth'
 import Footer from './Footer'
 import ProductImage from '../images/featured-plant2.jpg'
 import api from '../api'
+import './style.css'
 
 const Cart = () => {
     const [myCart, setSetCart] = useState([])
-
-    const testIng = (e) => {
-        alert("WIPP")
-    }
-
-    const remove = (e) => {
-        alert("WIP")
-    }
 
     useEffect(() => {
         api.getCartByUser('60fcd575062a7a736c5a9732').then((response) => {
             if (response.error) {
                 console.log("Error", response.data.data);
             } else {
-                console.log("de", response.data.data)
                 setSetCart(response.data.data)
             }
         })
@@ -36,6 +28,23 @@ const Cart = () => {
             s = s + parseInt(myCart[i].product_price * myCart[i].product_qty)
         }
         return s
+    }
+
+    const updateCartWithQty = (e) => {
+        const userId = JSON.parse(localStorage.getItem("USER"))._id
+        const prodId = e.target.id
+        const payload = { newQty: e.target.value }
+        api.updateCart(userId, prodId, payload).then((response) => {
+            if (response.error) {
+                console.log("Error", response.data.data);
+            } else {
+                setSetCart(response.data.cart)
+            }
+        })
+    }
+
+    const remove = (e) => {
+        alert("WIP")
     }
 
     return (
@@ -85,8 +94,18 @@ const Cart = () => {
                                                             </div>
                                                         </td>
                                                         <td className="text-center">
-                                                            <select className="rounded-pill" onChange={testIng}>
+                                                            <select className="rounded-pill remove-outline" id={val.product_id} onChange={updateCartWithQty}>
                                                                 <option value={val.product_id}>{val.product_qty}</option>
+                                                                <option>1</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                                <option>6</option>
+                                                                <option>7</option>
+                                                                <option>8</option>
+                                                                <option>9</option>
+                                                                <option>10+</option>
                                                             </select>
                                                         </td>
                                                         <td className="text-end">

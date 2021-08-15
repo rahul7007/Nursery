@@ -344,3 +344,16 @@ textarea {
 .remove-outline {
   outline: none !important;
 }
+
+/* error messages */
+#checkout span {
+  font-size: 0.8rem;
+  color: red;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+#checkout .btn:focus {
+  outline: none;
+  box-shadow: none;
+}

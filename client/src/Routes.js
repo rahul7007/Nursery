@@ -6,6 +6,7 @@ import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import MyOrders from './components/MyOrders'
 import OrderPlaced from './components/OrderPlaced'
+import Payment from './components/Payment'
 import Test from './Test'
 
 const Routes = () => {
@@ -19,6 +20,7 @@ const Routes = () => {
                     <Route path="/my-orders" exact component={MyOrders} />
                     <Route path="/product/:productId" exact component={AddProduct} />
                     <Route path="/checkout" exact component={Checkout} />
+                    <Route path="/payment-method" exact component={Payment} />
                     <Route path="/order-placed" exact component={OrderPlaced} />
                 </Switch>
             </BrowserRouter>

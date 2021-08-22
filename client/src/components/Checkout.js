@@ -66,6 +66,10 @@ const Checkout = ({ history }) => {
         } else if (!pinIsValid) {
             setValues({ ...values, zipError: true })
         }
+
+        if (nameIsValid && phoneIsValid && addressIsValid && pinIsValid && area) {
+            history.push('/payment-method')
+        }
     }
 
     return (
@@ -96,7 +100,7 @@ const Checkout = ({ history }) => {
                                 <div class="col-12">
                                     <label class="form-label">Area, Colony, Street, Sector, Village*</label>
                                     <input type="text" class="form-control" placeholder="Apartment, studio, or floor" name="area" onChange={handleOnChange("area")} />
-                                    {areaError ? <span>Area error</span> : null}
+                                    {areaError ? <span>Please enter a valid area name</span> : null}
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Landmark</label>

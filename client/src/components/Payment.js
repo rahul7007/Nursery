@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import Navbar from './Navbar'
-import Auth from './Auth'
 import './style.css'
 import aImg from '../images/pay-card.png'
 import bImg from '../images/pay-cod.png'
@@ -18,8 +16,6 @@ const Payment = () => {
 
     return (
         < div >
-            <Auth />
-            <Navbar />
             <section id="payment-method">
                 <div className="container">
                     <div className="row">

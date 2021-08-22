@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from './Navbar'
 import cart from '../images/empty-cart.png'
 import { Link } from 'react-router-dom'
-import Auth from './Auth'
 import Footer from './Footer'
 import ProductImage from '../images/featured-plant2.jpg'
 import api from '../api'
@@ -57,8 +55,6 @@ const Cart = ({ history }) => {
 
     return (
         <div>
-            <Auth />
-            <Navbar />
             <section id="cart">
                 {myCart.length > 0 ?
 

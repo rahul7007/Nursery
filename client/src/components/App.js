@@ -5,20 +5,12 @@ import FeaturedCards from './FeaturedCards'
 import TestimonialCards from './TestimonialCards'
 import { SimpleMap } from './Map'
 import YoutubeEmbed from './YoutubeEmbed'
-import Auth from './Auth'
-import Navbar from './Navbar'
 import Footer from './Footer'
 
 const App = () => {
 
   return (
     <div className="container-fluid">
-
-      {/* Top navbar */}
-      <Auth />
-
-      {/* Navbar */}
-      <Navbar />
 
       {/* About section */}
       <section id="about">

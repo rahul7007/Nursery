@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from './Navbar'
-import Auth from './Auth'
 import Footer from './Footer'
 import api from '../api'
 import './style.css'
@@ -74,8 +72,6 @@ const Checkout = ({ history }) => {
 
     return (
         <div>
-            <Auth />
-            <Navbar />
             <section id="checkout">
                 <div className="container py-5 shadow-lg bg-body">
                     <div className="row gx-2">

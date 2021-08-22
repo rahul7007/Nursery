@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Auth from './Auth'
-import Navbar from './Navbar'
 import ProductImage from '../images/featured-plant2.jpg'
 import ShieldImage from '../images/shield.png'
 import Footer from './Footer'
@@ -65,8 +63,6 @@ const AddProduct = (props) => {
 
     return (
         <div>
-            <Auth />
-            <Navbar />
             <section id="product">
                 <div className="container bg-light p-4 border rounded shadow-lg bg-body">
                     <div className="row">

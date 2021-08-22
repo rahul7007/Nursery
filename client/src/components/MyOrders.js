@@ -1,15 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Auth from './Auth'
-import Navbar from './Navbar'
 import noOrdersImg from '../images/no-order.PNG'
 import Footer from './Footer'
 
 const MyOrders = () => {
     return (
         <div>
-            <Auth />
-            <Navbar />
             <section id="my-orders" className="pb-3">
                 <div className="container flexWrapper flex-column">
                     <img src={noOrdersImg} className="img-fluid" />

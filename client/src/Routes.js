@@ -5,6 +5,7 @@ import App from './components/App'
 import Auth from './components/Auth'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout'
+import Footer from './components/Footer'
 import MyOrders from './components/MyOrders'
 import Navbar from './components/Navbar'
 import OrderPlaced from './components/OrderPlaced'
@@ -27,6 +28,7 @@ const Routes = () => {
                     <Route path="/payment-method" exact component={Payment} />
                     <Route path="/order-placed" exact component={OrderPlaced} />
                 </Switch>
+                <Footer />
             </BrowserRouter>
         </div>
     )

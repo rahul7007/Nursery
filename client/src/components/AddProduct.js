@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ProductImage from '../images/featured-plant2.jpg'
 import ShieldImage from '../images/shield.png'
-import Footer from './Footer'
 import api from '../api';
 import Spinner from './Spinner';
 
@@ -125,7 +124,6 @@ const AddProduct = (props) => {
                     </div>
                 </div>
             </section>
-            <Footer />
         </div>
     )
 }

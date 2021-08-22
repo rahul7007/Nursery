@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import cart from '../images/empty-cart.png'
 import { Link } from 'react-router-dom'
-import Footer from './Footer'
 import ProductImage from '../images/featured-plant2.jpg'
 import api from '../api'
 import './style.css'
@@ -167,7 +166,6 @@ const Cart = ({ history }) => {
                     </div>
                 }
             </section>
-            <Footer />
         </div>
     )
 }

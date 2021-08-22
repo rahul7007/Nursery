@@ -5,7 +5,6 @@ import FeaturedCards from './FeaturedCards'
 import TestimonialCards from './TestimonialCards'
 import { SimpleMap } from './Map'
 import YoutubeEmbed from './YoutubeEmbed'
-import Footer from './Footer'
 
 const App = () => {
 
@@ -179,8 +178,6 @@ const App = () => {
           </div>
         </div>
       </section>
-      {/* Footer */}
-      <Footer />
     </div >
   )
 }

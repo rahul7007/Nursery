@@ -3,7 +3,6 @@ import './style.css'
 import aImg from '../images/pay-card.png'
 import bImg from '../images/pay-cod.png'
 import cImg from '../images/pay-paypal.png'
-import Footer from './Footer'
 
 const Payment = () => {
 
@@ -63,7 +62,6 @@ const Payment = () => {
                     </div>
                 </div>
             </section>
-            <Footer />
         </div >
     )
 }

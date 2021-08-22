@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import noOrdersImg from '../images/no-order.PNG'
-import Footer from './Footer'
 
 const MyOrders = () => {
     return (
@@ -16,7 +15,6 @@ const MyOrders = () => {
                     </Link>
                 </div>
             </section>
-            <Footer />
         </div>
     )
 }

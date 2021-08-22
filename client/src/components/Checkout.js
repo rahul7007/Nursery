@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Footer from './Footer'
-import api from '../api'
 import './style.css'
 import { validateName, validatePhone, validateAddress, validatePincode } from '../util/helpers'
 import { NAME_ERROR_MESSAGE, PHONE_ERROR_MESSAGE, ADDRESS_ERROR_MESSAGE, ZIP_ERROR_MESSAGE } from '../util/constants'
@@ -156,7 +154,6 @@ const Checkout = ({ history }) => {
                     </div>
                 </div>
             </section>
-            <Footer />
         </div>
     )
 }
